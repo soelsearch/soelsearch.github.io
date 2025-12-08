@@ -54,6 +54,7 @@ html {
   html {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {
@@ -201,7 +202,7 @@ button:focus-visible {
   background: transparent;
   border: 1px solid transparent;
   box-shadow: none;
-  transition: 
+  transition:
     background 0.5s ease,
     border-color 0.5s ease,
     box-shadow 0.5s ease,
@@ -225,7 +226,7 @@ button:focus-visible {
 }
 
 .site-header.is-scrolled .liquidGlass-shine {
-  box-shadow: 
+  box-shadow:
     inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
     inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
 }
@@ -287,6 +288,7 @@ button:focus-visible {
   0% {
     background-position: 0% center;
   }
+
   100% {
     background-position: 200% center;
   }
@@ -296,7 +298,7 @@ button:focus-visible {
   .logo-img {
     height: 48px;
   }
-  
+
   .logo-text {
     font-size: 1.75rem;
   }
@@ -391,17 +393,17 @@ button:focus-visible {
     padding: 0;
     box-shadow: none;
   }
-  
+
   .nav-list {
     flex-direction: row;
     gap: var(--spacing-xs);
   }
-  
+
   .nav-link {
     padding: var(--spacing-xs) var(--spacing-md);
     position: relative;
   }
-  
+
   .nav-link::after {
     content: '';
     position: absolute;
@@ -415,16 +417,16 @@ button:focus-visible {
     transform-origin: right;
     transition: transform var(--transition);
   }
-  
+
   .nav-link:hover::after {
     transform: scaleX(1);
     transform-origin: left;
   }
-  
+
   .nav-link:hover {
     background: transparent;
   }
-  
+
   .menu-toggle {
     display: none;
   }
@@ -441,103 +443,146 @@ button:focus-visible {
   align-items: center;
 }
 
-/* 3D Layered gradient planes */
+/* 3D Layered gradient planes - Top layer */
 .hero .container::before {
   content: '';
   position: absolute;
-  top: -30%;
-  left: -20%;
-  width: 140%;
-  height: 160%;
-  background: 
-    linear-gradient(
-      135deg,
-      rgba(255, 230, 180, 0.6) 0%,
-      rgba(255, 200, 140, 0.4) 30%,
-      transparent 60%
-    );
-  transform: perspective(1000px) rotateX(20deg) rotateY(-10deg) translateZ(0);
-  animation: plane3D1 3s ease-in-out infinite;
+  top: -20%;
+  left: -15%;
+  width: 130%;
+  height: 140%;
+  background:
+    radial-gradient(ellipse 120% 100% at 20% 30%,
+      rgba(255, 235, 200, 0.7) 0%,
+      rgba(255, 215, 170, 0.5) 25%,
+      rgba(255, 195, 140, 0.3) 45%,
+      transparent 65%);
+  transform: perspective(1200px) rotateX(15deg) rotateY(-8deg) translateZ(0);
+  animation: plane3D1 20s linear infinite;
   pointer-events: none;
   z-index: 0;
 }
 
+/* 3D Layered gradient planes - Bottom layer */
 .hero .container::after {
   content: '';
   position: absolute;
-  bottom: -40%;
-  right: -30%;
-  width: 150%;
-  height: 150%;
-  background: 
-    linear-gradient(
-      -45deg,
-      rgba(255, 180, 120, 0.5) 0%,
-      rgba(255, 150, 100, 0.3) 40%,
-      transparent 70%
-    );
-  transform: perspective(1000px) rotateX(-15deg) rotateY(15deg) translateZ(0);
-  animation: plane3D2 5s ease-in-out infinite;
+  bottom: -25%;
+  right: -20%;
+  width: 140%;
+  height: 140%;
+  background:
+    radial-gradient(ellipse 100% 120% at 80% 70%,
+      rgba(255, 200, 150, 0.6) 0%,
+      rgba(255, 175, 120, 0.4) 30%,
+      rgba(255, 155, 100, 0.2) 50%,
+      transparent 70%);
+  transform: perspective(1200px) rotateX(-12deg) rotateY(10deg) translateZ(0);
+  animation: plane3D2 25s linear infinite;
   pointer-events: none;
   z-index: 0;
 }
 
 @keyframes plane3D1 {
-  0%, 100% {
-    transform: perspective(1000px) rotateX(20deg) rotateY(-10deg) translateZ(0) translateX(0);
+  0% {
+    transform: perspective(1200px) rotateX(15deg) rotateY(-8deg) translateZ(0) translateX(0);
+    opacity: 0.92;
   }
+
   25% {
-    transform: perspective(1000px) rotateX(15deg) rotateY(-5deg) translateZ(50px) translateX(3%);
+    transform: perspective(1200px) rotateX(16deg) rotateY(-6deg) translateZ(15px) translateX(1%);
+    opacity: 0.96;
   }
+
   50% {
-    transform: perspective(1000px) rotateX(25deg) rotateY(-15deg) translateZ(20px) translateX(-2%);
+    transform: perspective(1200px) rotateX(17deg) rotateY(-5deg) translateZ(25px) translateX(1.5%);
+    opacity: 1;
   }
+
   75% {
-    transform: perspective(1000px) rotateX(18deg) rotateY(-8deg) translateZ(30px) translateX(2%);
+    transform: perspective(1200px) rotateX(16deg) rotateY(-6deg) translateZ(15px) translateX(1%);
+    opacity: 0.96;
+  }
+
+  100% {
+    transform: perspective(1200px) rotateX(15deg) rotateY(-8deg) translateZ(0) translateX(0);
+    opacity: 0.92;
   }
 }
 
 @keyframes plane3D2 {
-  0%, 100% {
-    transform: perspective(1000px) rotateX(-15deg) rotateY(15deg) translateZ(0) translateY(0);
+  0% {
+    transform: perspective(1200px) rotateX(-12deg) rotateY(10deg) translateZ(0) translateY(0);
+    opacity: 0.92;
   }
-  33% {
-    transform: perspective(1000px) rotateX(-20deg) rotateY(10deg) translateZ(40px) translateY(-3%);
+
+  25% {
+    transform: perspective(1200px) rotateX(-13deg) rotateY(9deg) translateZ(12px) translateY(-0.8%);
+    opacity: 0.96;
   }
-  66% {
-    transform: perspective(1000px) rotateX(-10deg) rotateY(20deg) translateZ(25px) translateY(2%);
+
+  50% {
+    transform: perspective(1200px) rotateX(-14deg) rotateY(8deg) translateZ(20px) translateY(-1.2%);
+    opacity: 1;
+  }
+
+  75% {
+    transform: perspective(1200px) rotateX(-13deg) rotateY(9deg) translateZ(12px) translateY(-0.8%);
+    opacity: 0.96;
+  }
+
+  100% {
+    transform: perspective(1200px) rotateX(-12deg) rotateY(10deg) translateZ(0) translateY(0);
+    opacity: 0.92;
   }
 }
 
-/* Third 3D gradient layer for depth */
+/* Center 3D gradient - main ambient glow */
 .hero .hero-inner::after {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120%;
-  height: 120%;
-  background: 
-    radial-gradient(
-      ellipse at center,
-      rgba(255, 210, 160, 0.35) 0%,
-      rgba(255, 190, 130, 0.2) 30%,
-      transparent 60%
-    );
-  transform: translate(-50%, -50%) perspective(800px) rotateX(30deg) scale(1);
-  animation: plane3D3 1s ease-in-out infinite alternate;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 50%,
+      rgba(255, 225, 185, 0.5) 0%,
+      rgba(255, 210, 165, 0.4) 20%,
+      rgba(255, 195, 145, 0.3) 35%,
+      rgba(255, 180, 130, 0.2) 50%,
+      rgba(255, 165, 115, 0.1) 65%,
+      transparent 80%);
+  transform: translate(-50%, -50%);
+  animation: centerGlow 16s linear infinite;
   pointer-events: none;
   z-index: 0;
 }
 
-@keyframes plane3D3 {
+@keyframes centerGlow {
   0% {
-    transform: translate(-50%, -50%) perspective(800px) rotateX(30deg) rotateZ(0deg) scale(1);
-    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.9;
   }
-  100% {
-    transform: translate(-50%, -50%) perspective(800px) rotateX(40deg) rotateZ(5deg) scale(1.1);
+
+  25% {
+    transform: translate(-50%, -50%) scale(1.02);
+    opacity: 0.95;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.04);
     opacity: 1;
+  }
+
+  75% {
+    transform: translate(-50%, -50%) scale(1.02);
+    opacity: 0.95;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.9;
   }
 }
 
@@ -550,11 +595,11 @@ button:focus-visible {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: 
+  background:
     radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), transparent 40%),
     radial-gradient(circle at 70% 70%, rgba(255, 180, 50, 0.3), transparent 50%),
     linear-gradient(135deg, rgba(255, 220, 120, 0.6) 0%, rgba(255, 180, 80, 0.4) 50%, rgba(255, 140, 60, 0.3) 100%);
-  box-shadow: 
+  box-shadow:
     inset -20px -20px 40px rgba(255, 255, 255, 0.8),
     inset 10px 10px 30px rgba(255, 150, 50, 0.3),
     0 30px 60px rgba(255, 150, 50, 0.3),
@@ -571,11 +616,11 @@ button:focus-visible {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: 
+  background:
     radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), transparent 35%),
     radial-gradient(circle at 70% 70%, rgba(255, 100, 50, 0.25), transparent 50%),
     linear-gradient(135deg, rgba(255, 160, 80, 0.5) 0%, rgba(255, 120, 60, 0.4) 50%, rgba(255, 80, 50, 0.3) 100%);
-  box-shadow: 
+  box-shadow:
     inset -15px -15px 30px rgba(255, 255, 255, 0.7),
     inset 8px 8px 20px rgba(255, 100, 50, 0.3),
     0 25px 50px rgba(255, 100, 50, 0.25),
@@ -585,15 +630,20 @@ button:focus-visible {
 }
 
 @keyframes float3D {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) translateX(0) rotate(0deg);
   }
+
   25% {
     transform: translateY(-20px) translateX(10px) rotate(5deg);
   }
+
   50% {
     transform: translateY(-10px) translateX(-15px) rotate(-3deg);
   }
+
   75% {
     transform: translateY(-25px) translateX(5px) rotate(3deg);
   }
@@ -608,10 +658,10 @@ button:focus-visible {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: 
+  background:
     radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 1), transparent 40%),
     linear-gradient(135deg, rgba(255, 200, 100, 0.7) 0%, rgba(255, 150, 70, 0.5) 100%);
-  box-shadow: 
+  box-shadow:
     inset -8px -8px 16px rgba(255, 255, 255, 0.8),
     inset 4px 4px 10px rgba(255, 150, 50, 0.4),
     0 15px 30px rgba(255, 150, 50, 0.3);
@@ -621,9 +671,12 @@ button:focus-visible {
 }
 
 @keyframes float3DSmall {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) scale(1);
   }
+
   50% {
     transform: translateY(-30px) scale(1.1);
   }
@@ -641,26 +694,124 @@ button:focus-visible {
   text-align: center;
 }
 
-.hero-badge {
+/* Liquid Glass Badge */
+.liquidGlass-badge {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-xs) var(--spacing-md);
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
+  justify-content: center;
+  padding: 14px 32px;
   border-radius: 100px;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--color-text-muted);
-  margin-bottom: var(--spacing-md);
-  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-lg);
+  overflow: hidden;
+  cursor: default;
+
+  /* Glass background with depth */
+  background-color: rgba(255, 255, 255, 0.55);
+  background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.4) 100%);
+
+  /* Subtle border for visibility */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  /* Inner glow for liquid depth effect */
+  box-shadow:
+    inset 3px 3px 6px -2px rgba(255, 255, 255, 1),
+    inset -3px -3px 6px -2px rgba(255, 255, 255, 0.7),
+    inset 0 2px 4px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-.hero-badge-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--gradient-primary);
-  border-radius: 50%;
+.liquidGlass-badge .liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 100px;
+}
+
+.liquidGlass-badge .liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  background-image: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.15) 100%);
+  border-radius: 100px;
+}
+
+.liquidGlass-badge .liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 100px;
+  box-shadow:
+    inset 3px 3px 5px -1px rgba(255, 255, 255, 1),
+    inset -3px -3px 5px -1px rgba(255, 255, 255, 0.8);
+}
+
+/* Animated shine sweep effect - slower and more prominent */
+.liquidGlass-badge .liquidGlass-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.25) 25%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 255, 255, 0.25) 75%,
+      transparent 100%);
+  transform: skewX(-25deg);
+  animation: shineSwipe 6s ease-in-out infinite;
+}
+
+@keyframes shineSwipe {
+
+  0%,
+  100% {
+    left: -120%;
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 0.8;
+  }
+
+  40% {
+    left: 140%;
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.liquidGlass-badge-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .hero-title {
@@ -682,19 +833,20 @@ button:focus-visible {
 .hero-subtitle {
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--color-accent);
+  color: #a04000;
   margin-bottom: var(--spacing-md);
   letter-spacing: -0.01em;
 }
 
 .hero-mission {
-  font-size: 1.0625rem;
-  color: var(--color-text-muted);
+  font-size: 1.175rem;
+  color: #1a1a1a;
   margin-bottom: var(--spacing-lg);
-  max-width: 540px;
-  margin-left: auto;
+  max-width: 580px;
+  margin-left: 0;
   margin-right: auto;
-  line-height: 1.8;
+  line-height: 1.85;
+  text-align: left;
 }
 
 .hero-actions {
@@ -709,14 +861,15 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   gap: var(--spacing-xs);
-  padding: 14px 28px;
+  padding: 16px 32px;
   font-size: 0.9375rem;
   font-weight: 600;
   border-radius: 100px;
-  transition: all var(--transition);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
   min-width: 160px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .btn:focus-visible {
@@ -724,6 +877,256 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+/* Liquid Glass Primary Button */
+.btn-liquid-primary {
+  position: relative;
+  background-color: rgba(255, 168, 0, 0.85);
+  background-image: linear-gradient(135deg,
+      rgba(255, 190, 50, 0.9) 0%,
+      rgba(255, 160, 0, 0.85) 50%,
+      rgba(255, 180, 40, 0.9) 100%);
+  border: 1px solid rgba(255, 200, 100, 0.5);
+  box-shadow:
+    inset 3px 3px 6px -2px rgba(255, 255, 255, 0.8),
+    inset -3px -3px 6px -2px rgba(255, 200, 100, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.7),
+    inset 0 -2px 4px rgba(255, 150, 0, 0.3),
+    0 10px 30px rgba(255, 140, 0, 0.25),
+    0 4px 10px rgba(255, 120, 0, 0.2);
+}
+
+.btn-liquid-primary .liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 100px;
+}
+
+.btn-liquid-primary .liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 180, 50, 0.1);
+  background-image: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 220, 150, 0.2) 100%);
+  border-radius: 100px;
+}
+
+.btn-liquid-primary .liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 100px;
+  box-shadow:
+    inset 3px 3px 5px -1px rgba(255, 255, 255, 0.9),
+    inset -3px -3px 5px -1px rgba(255, 200, 100, 0.6);
+}
+
+.btn-liquid-primary .liquidGlass-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 25%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0.3) 75%,
+      transparent 100%);
+  transform: skewX(-25deg);
+  animation: shineSwipe 5s ease-in-out infinite;
+}
+
+.btn-liquid-primary .btn-liquid-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.02em;
+}
+
+.btn-liquid-primary .btn-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.btn-liquid-primary:hover .btn-icon {
+  transform: translateX(4px);
+}
+
+/* Liquid Glass Secondary Button */
+.btn-liquid-secondary {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.55);
+  background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.4) 100%);
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  box-shadow:
+    inset 3px 3px 6px -2px rgba(255, 255, 255, 1),
+    inset -3px -3px 6px -2px rgba(255, 255, 255, 0.7),
+    inset 0 2px 4px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.btn-liquid-secondary .liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 100px;
+}
+
+.btn-liquid-secondary .liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  background-image: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.15) 100%);
+  border-radius: 100px;
+}
+
+.btn-liquid-secondary .liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 100px;
+  box-shadow:
+    inset 3px 3px 5px -1px rgba(255, 255, 255, 1),
+    inset -3px -3px 5px -1px rgba(255, 255, 255, 0.8);
+}
+
+.btn-liquid-secondary .liquidGlass-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.25) 25%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0.25) 75%,
+      transparent 100%);
+  transform: skewX(-25deg);
+  animation: shineSwipe 5s ease-in-out infinite 0.5s;
+}
+
+.btn-liquid-secondary .btn-liquid-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  color: #2a2a2a;
+  letter-spacing: 0.02em;
+}
+
+/* Old button styles kept for other sections */
+.btn-glass-primary {
+  background: linear-gradient(135deg, #ffa800 0%, #ff8c00 50%, #ffb347 100%);
+  color: var(--color-text);
+  border: none;
+  box-shadow:
+    0 8px 32px rgba(255, 168, 0, 0.35),
+    0 4px 12px rgba(255, 140, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  position: relative;
+}
+
+.btn-glass-primary .btn-glass-effect {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.1) 100%);
+  border-radius: 100px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.btn-glass-primary .btn-glass-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-glass-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 16px 48px rgba(255, 168, 0, 0.45),
+    0 8px 24px rgba(255, 140, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.btn-glass-primary:hover .btn-glass-effect {
+  opacity: 0.8;
+}
+
+.btn-glass-primary:active {
+  transform: translateY(-1px) scale(1);
+}
+
+.btn-glass-primary .btn-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.btn-glass-primary:hover .btn-icon {
+  transform: translateX(4px);
+}
+
+/* Outline Button - Clean minimal style */
+.btn-outline {
+  background: var(--color-white);
+  color: var(--color-text);
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.btn-outline:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-outline:active {
+  transform: translateY(0);
+}
+
+/* Legacy button styles for other sections */
 .btn-primary {
   background: var(--gradient-primary);
   color: var(--color-text);
@@ -767,63 +1170,140 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   position: relative;
+  z-index: 2;
 }
 
-.hero-image::before {
+.hero-image-glass {
+  position: relative;
+  display: inline-block;
+  padding: 16px;
+  border-radius: 32px;
+  overflow: hidden;
+  
+  /* Glass background */
+  background-color: rgba(255, 255, 255, 0.45);
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  
+  /* Glass border */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  
+  /* Liquid glass depth effect */
+  box-shadow:
+    inset 3px 3px 8px -2px rgba(255, 255, 255, 1),
+    inset -3px -3px 8px -2px rgba(255, 255, 255, 0.6),
+    inset 0 2px 6px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.3),
+    0 20px 50px rgba(0, 0, 0, 0.12),
+    0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.hero-image-glass .liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 32px;
+}
+
+.hero-image-glass .liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.08);
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  border-radius: 32px;
+}
+
+.hero-image-glass .liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 32px;
+  box-shadow:
+    inset 3px 3px 6px -1px rgba(255, 255, 255, 1),
+    inset -3px -3px 6px -1px rgba(255, 255, 255, 0.7);
+}
+
+.hero-image-glass .liquidGlass-shine::before {
   content: '';
   position: absolute;
-  inset: 20px;
-  background: var(--gradient-primary);
-  border-radius: var(--border-radius-xl);
-  opacity: 0.2;
-  filter: blur(40px);
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 25%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  animation: shineSwipe 6s ease-in-out infinite 1s;
 }
 
-.hero-image img {
+.hero-image-glass img {
   position: relative;
-  max-width: 300px;
-  border-radius: var(--border-radius-xl);
-  box-shadow: var(--shadow-xl);
-  border: 4px solid var(--color-white);
+  z-index: 3;
+  display: block;
+  max-width: 500px;
+  height: auto;
+  border-radius: 20px;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
 }
 
 @media (min-width: 768px) {
   .hero {
     padding: calc(var(--header-height) + var(--spacing-2xl)) 0 var(--spacing-3xl);
   }
-  
+
   .hero-inner {
     flex-direction: row;
     align-items: center;
     gap: var(--spacing-2xl);
   }
-  
+
   .hero-content {
     flex: 1;
     text-align: left;
   }
-  
+
   .hero-mission {
     margin-left: 0;
     margin-right: 0;
   }
-  
+
   .hero-actions {
     justify-content: flex-start;
   }
-  
+
   .hero-image {
     flex-shrink: 0;
   }
-  
-  .hero-image img {
-    max-width: 340px;
+
+  .hero-image-glass img {
+    max-width: 450px;
   }
 }
 
 @media (min-width: 1024px) {
-  .hero-image img {
-    max-width: 400px;
+  .hero-image-glass img {
+    max-width: 550px;
   }
 }
 
@@ -969,7 +1449,7 @@ button:focus-visible {
   .about {
     padding: var(--spacing-3xl) 0;
   }
-  
+
   .about-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-lg);
@@ -1166,11 +1646,11 @@ button:focus-visible {
   .activities {
     padding: var(--spacing-3xl) 0;
   }
-  
+
   .activities-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .other-activities-list {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1180,7 +1660,7 @@ button:focus-visible {
   .activities-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .other-activities-list {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1269,7 +1749,7 @@ button:focus-visible {
   .contact {
     padding: var(--spacing-3xl) 0;
   }
-  
+
   .contact-cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1398,6 +1878,7 @@ button:focus-visible {
 }
 
 @media print {
+
   .site-header,
   .menu-toggle,
   .hero-actions,
@@ -1406,14 +1887,14 @@ button:focus-visible {
   .hero::after {
     display: none !important;
   }
-  
+
   body {
     font-size: 11pt;
     line-height: 1.5;
     color: #000;
     background: #fff;
   }
-  
+
   .hero,
   .about,
   .activities,
@@ -1421,14 +1902,14 @@ button:focus-visible {
     padding: 1.5rem 0;
     background: none !important;
   }
-  
+
   .hero-inner,
   .activities-grid,
   .about-grid,
   .contact-cards {
     display: block;
   }
-  
+
   .activity-card,
   .about-card,
   .contact-card {
@@ -1438,43 +1919,43 @@ button:focus-visible {
     border: 1px solid #ddd;
     page-break-inside: avoid;
   }
-  
+
   a {
     text-decoration: none;
     color: #000;
   }
-  
+
   .contact-card-link::after {
     content: " (" attr(href) ")";
     font-size: 9pt;
     color: #666;
   }
-  
+
   .site-footer {
     background: none;
     color: #000;
     border-top: 2px solid #ddd;
     padding: 1rem 0;
   }
-  
+
   .site-footer::before {
     display: none;
   }
-  
+
   .footer-brand img {
     filter: none;
   }
-  
+
   .footer-tagline,
   .footer-contact a,
   .footer-bottom p {
     color: #333;
   }
-  
+
   .section-title {
     font-size: 1.25rem;
   }
-  
+
   .hero-title {
     font-size: 1.75rem;
   }
