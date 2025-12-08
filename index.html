@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOELSEARCH — Student Research Initiative | SOEL</title>
+  <meta name="description" content="SOELSEARCH — Student-led research initiative at the School of Excellence in Law (SOEL), guided by IQAC, TNDALU. Workshops, competitions, mentoring, publications.">
+  <meta property="og:title" content="SOELSEARCH — Student Research Initiative | SOEL">
+  <meta property="og:description" content="SOELSEARCH — Student-led research initiative at the School of Excellence in Law (SOEL), guided by IQAC, TNDALU. Workshops, competitions, mentoring, publications.">
+  <meta property="og:image" content="assets/hero-placeholder.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- SVG Filter for Liquid Glass Distortion -->
+  <svg style="display: none" aria-hidden="true">
+    <filter
+      id="glass-distortion"
+      x="0%"
+      y="0%"
+      width="100%"
+      height="100%"
+      filterUnits="objectBoundingBox"
+    >
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.01 0.01"
+        numOctaves="1"
+        seed="5"
+        result="turbulence"
+      />
+      <feComponentTransfer in="turbulence" result="mapped">
+        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+      </feComponentTransfer>
+      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+      <feSpecularLighting
+        in="softMap"
+        surfaceScale="5"
+        specularConstant="1"
+        specularExponent="100"
+        lighting-color="white"
+        result="specLight"
+      >
+        <fePointLight x="-200" y="-200" z="300" />
+      </feSpecularLighting>
+      <feComposite
+        in="specLight"
+        operator="arithmetic"
+        k1="0"
+        k2="1"
+        k3="1"
+        k4="0"
+        result="litImage"
+      />
+      <feDisplacementMap
+        in="SourceGraphic"
+        in2="softMap"
+        scale="80"
+        xChannelSelector="R"
+        yChannelSelector="G"
+      />
+    </filter>
+  </svg>
+
+  <header class="site-header liquidGlass-wrapper">
+    <div class="liquidGlass-effect"></div>
+    <div class="liquidGlass-tint"></div>
+    <div class="liquidGlass-shine"></div>
+    <div class="container header-inner liquidGlass-content">
+      <a href="#" class="logo">
+        <img src="assets/logo-soelsearch.svg" alt="SOELSEARCH Logo" width="160" height="48">
+      </a>
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#activities" class="nav-link">Activities</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Student Research Initiative
+          </div>
+          <h1 class="hero-title"><span class="hero-title-gradient">SOEL</span>SEARCH</h1>
+          <p class="hero-subtitle">School of Excellence in Law</p>
+          <p class="hero-mission">Nurturing legal scholarship, research skills, and collaborative inquiry under the guidance of IQAC, The Tamil Nadu Dr. Ambedkar Law University.</p>
+          <div class="hero-actions">
+            <a href="#about" class="btn btn-primary">
+              Discover More
+              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="assets/dr-ambedkar.jpg" alt="Portrait of Dr. B. R. Ambedkar, jurist and former Law Minister, symbolizing commitment to legal scholarship and social justice" width="400" height="500">
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title">About SOELSEARCH</h2>
+        </div>
+        <div class="about-content">
+          <p class="about-text">SOELSEARCH is a student-led research initiative at the School of Excellence in Law (SOEL), guided by the Internal Quality Assurance Cell (IQAC) of The Tamil Nadu Dr. Ambedkar Law University. Our aim is to build a vibrant, inclusive, and sustainable research ecosystem that equips students with the skills and mentorship necessary for rigorous legal inquiry and impactful scholarship. We support research training, academic publishing, collaborative projects, and professional development — all grounded in the principles of academic integrity and social justice.</p>
+          
+          <div class="about-grid">
+            <div class="about-card vision-card">
+              <h3 class="about-card-title">Vision</h3>
+              <p>To cultivate an enduring research culture at SOEL that fosters academic growth, legal innovation, and collaborative inquiry across diverse legal disciplines.</p>
+            </div>
+            
+            <div class="about-card objectives-card">
+              <h3 class="about-card-title">Objectives</h3>
+              <ul class="objectives-list">
+                <li>Encourage and mentor students in rigorous legal research and writing.</li>
+                <li>Provide institutional support for publishing, competitions, and collaborations.</li>
+                <li>Connect students with faculty, alumni, and academic partners for holistic development.</li>
+                <li>Facilitate training in research methodologies, citation practices, and e-resources.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="activities" id="activities">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">What We Do</p>
+          <h2 class="section-title">Our Activities</h2>
+          <p class="section-intro">SOELSEARCH runs a structured program of workshops, competitions, collaborations, and publications designed to develop research skills and showcase student work.</p>
+        </div>
+        
+        <div class="activities-grid">
+          <article class="activity-card">
+            <div class="activity-image">
+              <img src="assets/activity-workshop.jpg" alt="Research workshops and training sessions" width="400" height="250">
+            </div>
+            <div class="activity-content">
+              <h3 class="activity-title">Research Workshops and Training</h3>
+              <p class="activity-description">Hands-on workshops on doctrinal and empirical methods, citation systems (Bluebook, OSCOLA, APA), academic writing, and legal databases such as SCC Online and HeinOnline. Certificate courses and practical training help students apply research methods confidently.</p>
+            </div>
+          </article>
+          
+          <article class="activity-card">
+            <div class="activity-image">
+              <img src="assets/activity-competition.jpg" alt="Competitions and monthly challenges" width="400" height="250">
+            </div>
+            <div class="activity-content">
+              <h3 class="activity-title">Competitions and Monthly Challenges</h3>
+              <p class="activity-description">Inter- and intra-college contests — research paper competitions, policy critiques, legislative drafting, and judgment deconstruction. Monthly thematic challenges highlight short submissions on pressing issues (Technology and Law, Gender Justice, Labour Rights).</p>
+            </div>
+          </article>
+          
+          <article class="activity-card">
+            <div class="activity-image">
+              <img src="assets/activity-publication.jpg" alt="Publications and mentoring programs" width="400" height="250">
+            </div>
+            <div class="activity-content">
+              <h3 class="activity-title">Publications and Mentoring</h3>
+              <p class="activity-description">Student articles, case notes, and an Annual Research Digest. Peer review and faculty mentoring support external submissions, and a Research Bulletin lists curated calls for papers and opportunities.</p>
+            </div>
+          </article>
+        </div>
+        
+        <div class="other-activities">
+          <h3 class="other-activities-title">Other Initiatives</h3>
+          <ul class="other-activities-list">
+            <li>Collaborations with academic partners, conferences, and guest lectures.</li>
+            <li>Legal writing clinics and research mentoring programs.</li>
+            <li>Annual SOELSEARCH Research Conclave and curated research bulletin.</li>
+          </ul>
+        </div>
+        
+        <div class="governance">
+          <h3 class="governance-title">Structure and Governance</h3>
+          <p class="governance-text">SOELSEARCH operates under IQAC guidance and is supported by a Faculty Advisory Board and a Student Core Committee. Appointments and selection are merit-based, guided by transparent criteria emphasizing research experience and academic interest.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Reach Out</p>
+          <h2 class="section-title">Get in Touch</h2>
+          <p class="section-intro">For membership enquiries, mentoring requests, collaboration proposals, or publication opportunities, reach out to us.</p>
+        </div>
+        
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </div>
+            <div class="contact-card-content">
+              <p class="contact-card-title">Email</p>
+              <a href="mailto:soelsearch@gmail.com" class="contact-card-link">soelsearch@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="contact-card-content">
+              <p class="contact-card-title">Phone</p>
+              <a href="tel:+911234567890" class="contact-card-link">1234567890</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo-soelsearch.svg" alt="SOELSEARCH Logo" width="140" height="42">
+        <p class="footer-tagline">A student-led research initiative at the School of Excellence in Law, The Tamil Nadu Dr. Ambedkar Law University. Guided by IQAC.</p>
+      </div>
+      <div class="footer-nav">
+        <p class="footer-nav-title">Quick Links</p>
+        <div class="footer-links">
+          <a href="#about">About Us</a>
+          <a href="#activities">Activities</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <p class="footer-nav-title">Contact</p>
+        <div class="footer-contact">
+          <a href="mailto:soelsearch@gmail.com">
+            <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            soelsearch@gmail.com
+          </a>
+          <a href="tel:+911234567890">
+            <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            1234567890
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>SOELSEARCH — School of Excellence in Law, The Tamil Nadu Dr. Ambedkar Law University</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var header = document.querySelector('.site-header');
+      var menuToggle = document.getElementById('menu-toggle');
+      var mainNav = document.getElementById('main-nav');
+      
+      function handleScroll() {
+        if (window.scrollY > 50) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }
+      
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+      
+      menuToggle.addEventListener('click', function() {
+        var isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        mainNav.classList.toggle('is-open');
+        menuToggle.classList.toggle('is-active');
+      });
+      
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          var target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            
+            if (mainNav.classList.contains('is-open')) {
+              mainNav.classList.remove('is-open');
+              menuToggle.classList.remove('is-active');
+              menuToggle.setAttribute('aria-expanded', 'false');
+            }
+            
+            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            if (prefersReducedMotion) {
+              target.scrollIntoView();
+            } else {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
