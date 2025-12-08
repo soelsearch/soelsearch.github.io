@@ -69,7 +69,11 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--color-text);
-  background-color: var(--color-white);
+  background: linear-gradient(135deg, 
+    rgba(255, 248, 240, 1) 0%,
+    rgba(255, 252, 248, 1) 50%,
+    rgba(255, 245, 235, 1) 100%
+  );
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -435,8 +439,13 @@ button:focus-visible {
 .hero {
   min-height: 100vh;
   min-height: 100dvh;
-  padding: calc(var(--header-height) + var(--spacing-xl)) 0 var(--spacing-3xl);
-  background: #fefefe;
+  padding: calc(var(--header-height) + var(--spacing-xl)) 0 var(--spacing-2xl);
+  background: 
+    linear-gradient(135deg, 
+      rgba(255, 248, 240, 1) 0%,
+      rgba(255, 252, 248, 1) 50%,
+      rgba(255, 245, 235, 1) 100%
+    );
   position: relative;
   overflow: hidden;
   display: flex;
@@ -862,7 +871,7 @@ button:focus-visible {
   justify-content: center;
   gap: var(--spacing-xs);
   padding: 16px 32px;
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   border-radius: 100px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
@@ -1332,7 +1341,7 @@ button:focus-visible {
 }
 
 .section-title {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
   font-weight: 800;
   color: var(--color-text);
   letter-spacing: -0.02em;
@@ -1349,7 +1358,97 @@ button:focus-visible {
 
 .about {
   padding: var(--spacing-2xl) 0;
-  background: var(--color-white);
+  position: relative;
+  overflow: hidden;
+  /* 3D Gradient Background - matches hero */
+  background: 
+    linear-gradient(135deg, 
+      rgba(255, 248, 240, 1) 0%,
+      rgba(255, 252, 248, 1) 50%,
+      rgba(255, 245, 235, 1) 100%
+    );
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 20% 20%,
+      rgba(245, 166, 35, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 80%,
+      rgba(245, 166, 35, 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 50% 30% at 50% 50%,
+      rgba(255, 200, 120, 0.05) 0%,
+      transparent 50%
+    );
+  animation: aboutGradientMove 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.about::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 220, 180, 0.1) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(245, 166, 35, 0.08) 0%,
+      transparent 40%
+    );
+  animation: aboutGradientRotate 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes aboutGradientMove {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(2%, 3%) scale(1.02);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-1%, 2%) scale(1.01);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(1%, -2%) scale(1.03);
+    opacity: 0.95;
+  }
+}
+
+@keyframes aboutGradientRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.about .container {
+  position: relative;
+  z-index: 1;
 }
 
 .about-text {
@@ -1357,7 +1456,7 @@ button:focus-visible {
   line-height: 1.9;
   color: var(--color-text);
   margin-bottom: var(--spacing-xl);
-  max-width: 800px;
+  text-align: justify;
 }
 
 .about-grid {
@@ -1365,37 +1464,79 @@ button:focus-visible {
   gap: var(--spacing-md);
 }
 
+/* Beautiful Liquid Glass Card */
 .about-card {
-  background: var(--gradient-card);
-  padding: var(--spacing-lg);
-  border-radius: var(--border-radius-lg);
-  border: 1px solid var(--color-border);
   position: relative;
   overflow: hidden;
-  transition: all var(--transition);
+  border-radius: 24px;
+  
+  /* Glass base */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  
+  /* Soft shadow for depth */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  
+  /* Glassmorphism blur */
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  /* Subtle border */
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
+/* Top highlight shine */
 .about-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--gradient-primary);
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.4) 30%,
+    transparent 100%
+  );
+  border-radius: 24px 24px 0 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.about-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-  border-color: transparent;
+/* Edge highlight for 3D effect */
+.about-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  box-shadow: 
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  z-index: 2;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .about-card:hover {
-    transform: none;
-  }
+.about-card .liquidGlass-effect,
+.about-card .liquidGlass-tint,
+.about-card .liquidGlass-shine {
+  display: none;
 }
+
+.about-card-content {
+  position: relative;
+  z-index: 3;
+  padding: var(--spacing-lg);
+}
+
 
 .about-card-icon {
   width: 48px;
@@ -1410,28 +1551,34 @@ button:focus-visible {
 }
 
 .about-card-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: var(--spacing-sm);
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .about-card p {
-  color: var(--color-text-muted);
-  line-height: 1.7;
+  font-size: 1.0625rem;
+  color: #3a3a3a;
+  line-height: 1.75;
+  text-align: justify;
 }
 
 .objectives-list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: 6px;
 }
 
 .objectives-list li {
   position: relative;
   padding-left: var(--spacing-lg);
-  color: var(--color-text-muted);
-  line-height: 1.7;
+  font-size: 1.0625rem;
+  color: #3a3a3a;
+  line-height: 1.6;
 }
 
 .objectives-list li::before {
@@ -1685,40 +1832,145 @@ button:focus-visible {
   gap: var(--spacing-md);
 }
 
+/* Beautiful Liquid Glass Contact Card */
 .contact-card {
-  background: var(--gradient-card);
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  
+  /* Glass base */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  
+  /* Soft shadow for depth */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  
+  /* Glassmorphism blur */
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  /* Subtle border */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Top highlight shine */
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.4) 30%,
+    transparent 100%
+  );
+  border-radius: 24px 24px 0 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Edge highlight for 3D effect */
+.contact-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  box-shadow: 
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.contact-card .liquidGlass-effect,
+.contact-card .liquidGlass-tint,
+.contact-card .liquidGlass-shine {
+  display: none;
+}
+
+.contact-card-inner {
+  position: relative;
+  z-index: 3;
   padding: var(--spacing-lg);
-  border-radius: var(--border-radius-lg);
-  border: 1px solid var(--color-border);
   display: flex;
   align-items: flex-start;
   gap: var(--spacing-md);
-  transition: all var(--transition);
 }
 
-.contact-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-  border-color: transparent;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contact-card:hover {
-    transform: none;
-  }
-}
 
 .contact-icon {
   flex-shrink: 0;
   width: 56px;
   height: 56px;
-  background: var(--gradient-primary);
+  background: linear-gradient(
+    145deg,
+    #ffd280 0%,
+    #ffb347 30%,
+    #f5a623 60%,
+    #e6951c 100%
+  );
   border-radius: var(--border-radius);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-text);
-  box-shadow: var(--shadow-sm);
+  position: relative;
+  transform-style: preserve-3d;
+  
+  /* 3D depth effect */
+  box-shadow:
+    0 8px 16px rgba(245, 166, 35, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+.contact-icon::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  right: 4px;
+  height: 40%;
+  border-radius: 8px 8px 50% 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+.contact-icon svg {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
 
 .contact-card-content {
@@ -1726,18 +1978,20 @@ button:focus-visible {
 }
 
 .contact-card-title {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-text-muted);
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #5a5a5a;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 4px;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
 }
 
 .contact-card-link {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--color-text);
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
   transition: color var(--transition-fast);
 }
 
