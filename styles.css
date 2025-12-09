@@ -443,9 +443,12 @@ button:focus-visible {
   background: 
     linear-gradient(135deg, 
       rgba(255, 248, 240, 1) 0%,
-      rgba(255, 252, 248, 1) 50%,
-      rgba(255, 245, 235, 1) 100%
+      rgba(255, 252, 248, 1) 30%,
+      rgba(255, 245, 235, 1) 60%,
+      rgba(255, 250, 242, 1) 100%
     );
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease-in-out infinite;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -462,12 +465,12 @@ button:focus-visible {
   height: 140%;
   background:
     radial-gradient(ellipse 120% 100% at 20% 30%,
-      rgba(255, 235, 200, 0.7) 0%,
-      rgba(255, 215, 170, 0.5) 25%,
-      rgba(255, 195, 140, 0.3) 45%,
+      rgba(255, 235, 200, 0.8) 0%,
+      rgba(255, 215, 170, 0.6) 25%,
+      rgba(255, 195, 140, 0.4) 45%,
       transparent 65%);
   transform: perspective(1200px) rotateX(15deg) rotateY(-8deg) translateZ(0);
-  animation: plane3D1 20s linear infinite;
+  animation: plane3D1 25s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
 }
@@ -638,6 +641,12 @@ button:focus-visible {
   pointer-events: none;
 }
 
+/* Smooth transition overlay for hero bottom */
+.hero .container::after {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
 @keyframes float3D {
 
   0%,
@@ -700,6 +709,8 @@ button:focus-visible {
 }
 
 .hero-content {
+  position: relative;
+  z-index: 10;
   text-align: center;
 }
 
@@ -723,24 +734,24 @@ button:focus-visible {
       rgba(255, 255, 255, 0.4) 100%);
 
   /* Subtle border for visibility */
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
 
   /* Inner glow for liquid depth effect */
   box-shadow:
-    inset 3px 3px 6px -2px rgba(255, 255, 255, 1),
-    inset -3px -3px 6px -2px rgba(255, 255, 255, 0.7),
-    inset 0 2px 4px rgba(255, 255, 255, 0.95),
-    inset 0 -2px 4px rgba(255, 255, 255, 0.3),
-    0 10px 30px rgba(0, 0, 0, 0.12),
-    0 4px 10px rgba(0, 0, 0, 0.08);
+    inset 3px 3px 8px -2px rgba(255, 255, 255, 1),
+    inset -3px -3px 8px -2px rgba(255, 255, 255, 0.8),
+    inset 0 3px 6px rgba(255, 255, 255, 1),
+    inset 0 -3px 6px rgba(255, 255, 255, 0.5),
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .liquidGlass-badge .liquidGlass-effect {
   position: absolute;
   z-index: 0;
   inset: 0;
-  backdrop-filter: blur(30px) saturate(180%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
   filter: url(#glass-distortion);
   overflow: hidden;
   isolation: isolate;
@@ -765,8 +776,9 @@ button:focus-visible {
   overflow: hidden;
   border-radius: 100px;
   box-shadow:
-    inset 3px 3px 5px -1px rgba(255, 255, 255, 1),
-    inset -3px -3px 5px -1px rgba(255, 255, 255, 0.8);
+    inset 4px 4px 8px -1px rgba(255, 255, 255, 1),
+    inset -4px -4px 8px -1px rgba(255, 255, 255, 0.9),
+    inset 0 2px 6px rgba(255, 255, 255, 1);
 }
 
 /* Animated shine sweep effect - slower and more prominent */
@@ -779,12 +791,12 @@ button:focus-visible {
   height: 100%;
   background: linear-gradient(90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.25) 25%,
-      rgba(255, 255, 255, 0.6) 50%,
-      rgba(255, 255, 255, 0.25) 75%,
+      rgba(255, 255, 255, 0.4) 25%,
+      rgba(255, 255, 255, 0.9) 50%,
+      rgba(255, 255, 255, 0.4) 75%,
       transparent 100%);
   transform: skewX(-25deg);
-  animation: shineSwipe 6s ease-in-out infinite;
+  animation: shineSwipe 4s ease-in-out infinite;
 }
 
 @keyframes shineSwipe {
@@ -810,6 +822,27 @@ button:focus-visible {
   }
 }
 
+@keyframes diagonalShine {
+  0%,
+  100% {
+    transform: translateX(-150%) translateY(-150%) rotate(45deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateX(150%) translateY(150%) rotate(45deg);
+    opacity: 0.8;
+  }
+
+  90% {
+    opacity: 0.4;
+  }
+}
+
 .liquidGlass-badge-content {
   position: relative;
   z-index: 3;
@@ -824,9 +857,11 @@ button:focus-visible {
 }
 
 .hero-title {
+  position: relative;
+  z-index: 10;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 900;
-  color: var(--color-text);
+  color: #000000;
   margin-bottom: var(--spacing-sm);
   letter-spacing: -0.03em;
   line-height: 1.05;
@@ -839,23 +874,35 @@ button:focus-visible {
   background-clip: text;
 }
 
+.hero-title-text {
+  background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 50%, #1a1a1a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .hero-subtitle {
+  position: relative;
+  z-index: 10;
   font-size: 1.125rem;
-  font-weight: 600;
-  color: #a04000;
+  font-weight: 700;
+  color: #8B4513;
   margin-bottom: var(--spacing-md);
   letter-spacing: -0.01em;
 }
 
 .hero-mission {
-  font-size: 1.175rem;
-  color: #1a1a1a;
+  position: relative;
+  z-index: 10;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: #4a4a4a;
   margin-bottom: var(--spacing-lg);
   max-width: 580px;
   margin-left: 0;
   margin-right: auto;
-  line-height: 1.85;
-  text-align: left;
+  line-height: 1.6;
+  text-align: justify;
 }
 
 .hero-actions {
@@ -980,27 +1027,27 @@ button:focus-visible {
 /* Liquid Glass Secondary Button */
 .btn-liquid-secondary {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.55);
+  background-color: rgba(255, 255, 255, 0.6);
   background-image: linear-gradient(135deg,
-      rgba(255, 255, 255, 0.5) 0%,
-      rgba(255, 255, 255, 0.2) 50%,
-      rgba(255, 255, 255, 0.4) 100%);
-  border: 1px solid rgba(200, 200, 200, 0.5);
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.5) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow:
-    inset 3px 3px 6px -2px rgba(255, 255, 255, 1),
-    inset -3px -3px 6px -2px rgba(255, 255, 255, 0.7),
-    inset 0 2px 4px rgba(255, 255, 255, 0.95),
-    inset 0 -2px 4px rgba(255, 255, 255, 0.3),
-    0 10px 30px rgba(0, 0, 0, 0.08),
-    0 4px 10px rgba(0, 0, 0, 0.05);
+    inset 3px 3px 8px -2px rgba(255, 255, 255, 1),
+    inset -3px -3px 8px -2px rgba(255, 255, 255, 0.8),
+    inset 0 3px 6px rgba(255, 255, 255, 1),
+    inset 0 -3px 6px rgba(255, 255, 255, 0.5),
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .btn-liquid-secondary .liquidGlass-effect {
   position: absolute;
   z-index: 0;
   inset: 0;
-  backdrop-filter: blur(30px) saturate(180%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
   filter: url(#glass-distortion);
   overflow: hidden;
   isolation: isolate;
@@ -1025,8 +1072,9 @@ button:focus-visible {
   overflow: hidden;
   border-radius: 100px;
   box-shadow:
-    inset 3px 3px 5px -1px rgba(255, 255, 255, 1),
-    inset -3px -3px 5px -1px rgba(255, 255, 255, 0.8);
+    inset 4px 4px 8px -1px rgba(255, 255, 255, 1),
+    inset -4px -4px 8px -1px rgba(255, 255, 255, 0.9),
+    inset 0 2px 6px rgba(255, 255, 255, 1);
 }
 
 .btn-liquid-secondary .liquidGlass-shine::before {
@@ -1034,16 +1082,16 @@ button:focus-visible {
   position: absolute;
   top: 0;
   left: -100%;
-  width: 80%;
+  width: 100%;
   height: 100%;
   background: linear-gradient(90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.25) 25%,
-      rgba(255, 255, 255, 0.5) 50%,
-      rgba(255, 255, 255, 0.25) 75%,
+      rgba(255, 255, 255, 0.4) 25%,
+      rgba(255, 255, 255, 0.9) 50%,
+      rgba(255, 255, 255, 0.4) 75%,
       transparent 100%);
   transform: skewX(-25deg);
-  animation: shineSwipe 5s ease-in-out infinite 0.5s;
+  animation: shineSwipe 4s ease-in-out infinite 0.5s;
 }
 
 .btn-liquid-secondary .btn-liquid-content {
@@ -1317,6 +1365,8 @@ button:focus-visible {
 }
 
 .section-header {
+  position: relative;
+  z-index: 5;
   margin-bottom: var(--spacing-xl);
 }
 
@@ -1325,10 +1375,10 @@ button:focus-visible {
   align-items: center;
   gap: var(--spacing-xs);
   font-size: 0.8125rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-accent);
+  color: #D35400;
   margin-bottom: var(--spacing-sm);
 }
 
@@ -1341,19 +1391,22 @@ button:focus-visible {
 }
 
 .section-title {
+  font-family: var(--font-family);
   font-size: clamp(2.25rem, 5vw, 3.5rem);
-  font-weight: 800;
-  color: var(--color-text);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  font-weight: 900;
+  color: #000000;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 
 .section-intro {
   font-size: 1.0625rem;
-  color: var(--color-text-muted);
+  color: #4a4a4a;
+  font-weight: 500;
   max-width: 640px;
-  line-height: 1.8;
+  line-height: 1.6;
   margin-top: var(--spacing-sm);
+  text-align: justify;
 }
 
 .about {
@@ -1364,97 +1417,66 @@ button:focus-visible {
   background: 
     linear-gradient(135deg, 
       rgba(255, 248, 240, 1) 0%,
-      rgba(255, 252, 248, 1) 50%,
-      rgba(255, 245, 235, 1) 100%
+      rgba(255, 252, 248, 1) 30%,
+      rgba(255, 245, 235, 1) 60%,
+      rgba(255, 250, 242, 1) 100%
     );
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease-in-out infinite;
 }
 
-.about::before {
+.about .container::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: -20%;
+  left: -15%;
+  width: 130%;
+  height: 140%;
   background:
-    radial-gradient(
-      ellipse 80% 50% at 20% 20%,
-      rgba(245, 166, 35, 0.08) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse 60% 40% at 80% 80%,
-      rgba(245, 166, 35, 0.06) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse 50% 30% at 50% 50%,
-      rgba(255, 200, 120, 0.05) 0%,
-      transparent 50%
-    );
-  animation: aboutGradientMove 20s ease-in-out infinite;
+    radial-gradient(ellipse 120% 100% at 20% 30%,
+      rgba(255, 235, 200, 0.7) 0%,
+      rgba(255, 215, 170, 0.5) 25%,
+      rgba(255, 195, 140, 0.3) 45%,
+      transparent 65%);
+  transform: perspective(1200px) rotateX(15deg) rotateY(-8deg) translateZ(0);
+  animation: plane3D1 25s ease-in-out infinite;
   pointer-events: none;
+  z-index: 0;
 }
 
-.about::after {
+.about .container::after {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  right: -50%;
-  bottom: -50%;
+  bottom: -25%;
+  right: -20%;
+  width: 140%;
+  height: 140%;
   background:
-    radial-gradient(
-      circle at 30% 30%,
-      rgba(255, 220, 180, 0.1) 0%,
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 70% 70%,
-      rgba(245, 166, 35, 0.08) 0%,
-      transparent 40%
-    );
-  animation: aboutGradientRotate 30s linear infinite;
+    radial-gradient(ellipse 100% 120% at 80% 70%,
+      rgba(255, 200, 150, 0.6) 0%,
+      rgba(255, 175, 120, 0.4) 30%,
+      rgba(255, 155, 100, 0.2) 50%,
+      transparent 70%);
+  transform: perspective(1200px) rotateX(-12deg) rotateY(10deg) translateZ(0);
+  animation: plane3D2 30s ease-in-out infinite;
   pointer-events: none;
+  z-index: 0;
 }
 
-@keyframes aboutGradientMove {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  25% {
-    transform: translate(2%, 3%) scale(1.02);
-    opacity: 0.9;
-  }
-  50% {
-    transform: translate(-1%, 2%) scale(1.01);
-    opacity: 1;
-  }
-  75% {
-    transform: translate(1%, -2%) scale(1.03);
-    opacity: 0.95;
-  }
-}
 
-@keyframes aboutGradientRotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 .about .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .about-text {
-  font-size: 1.125rem;
-  line-height: 1.9;
-  color: var(--color-text);
+  position: relative;
+  z-index: 5;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  font-weight: 500;
   margin-bottom: var(--spacing-xl);
   text-align: justify;
 }
@@ -1464,71 +1486,88 @@ button:focus-visible {
   gap: var(--spacing-md);
 }
 
-/* Beautiful Liquid Glass Card */
+/* Liquid Glass Card - Premium Design */
 .about-card {
   position: relative;
   overflow: hidden;
   border-radius: 24px;
-  
-  /* Glass base */
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0.8) 100%
-  );
-  
-  /* Soft shadow for depth */
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    0 2px 8px rgba(0, 0, 0, 0.06),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-  
-  /* Glassmorphism blur */
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  
-  /* Subtle border */
-  border: 1px solid rgba(255, 255, 255, 0.5);
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
 }
 
-/* Top highlight shine */
-.about-card::before {
+.about-card .liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: inherit;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.about-card .liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+.about-card .liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  box-shadow:
+    inset 4px 4px 8px 0 rgba(255, 255, 255, 0.9),
+    inset -4px -4px 8px 0 rgba(255, 255, 255, 0.5),
+    inset 0 0 30px rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+
+/* Horizontal shine sweep like button */
+.about-card .liquidGlass-shine::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
+  left: -100%;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0.4) 30%,
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0.2) 70%,
     transparent 100%
   );
-  border-radius: 24px 24px 0 0;
+  animation: shineSwipe 4s ease-in-out infinite;
   pointer-events: none;
-  z-index: 1;
+  filter: blur(8px);
 }
 
-/* Edge highlight for 3D effect */
-.about-card::after {
+/* Light gradient overlay for depth */
+.about-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 24px;
-  box-shadow: 
-    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
-    inset -1px -1px 3px rgba(255, 255, 255, 0.5),
-    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  z-index: 2.5;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 25%,
+    transparent 75%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
   pointer-events: none;
-  z-index: 2;
-}
-
-.about-card .liquidGlass-effect,
-.about-card .liquidGlass-tint,
-.about-card .liquidGlass-shine {
-  display: none;
 }
 
 .about-card-content {
@@ -1554,7 +1593,7 @@ button:focus-visible {
   font-family: 'Manrope', sans-serif;
   font-size: 1.75rem;
   font-weight: 800;
-  color: #1a1a1a;
+  color: #000000;
   margin-bottom: var(--spacing-md);
   letter-spacing: -0.02em;
   text-align: center;
@@ -1562,8 +1601,9 @@ button:focus-visible {
 
 .about-card p {
   font-size: 1.0625rem;
-  color: #3a3a3a;
-  line-height: 1.75;
+  color: #4a4a4a;
+  font-weight: 500;
+  line-height: 1.6;
   text-align: justify;
 }
 
@@ -1577,8 +1617,10 @@ button:focus-visible {
   position: relative;
   padding-left: var(--spacing-lg);
   font-size: 1.0625rem;
-  color: #3a3a3a;
+  color: #4a4a4a;
+  font-weight: 500;
   line-height: 1.6;
+  text-align: justify;
 }
 
 .objectives-list li::before {
@@ -1605,8 +1647,58 @@ button:focus-visible {
 
 .activities {
   padding: var(--spacing-2xl) 0;
-  background: var(--gradient-warm);
+  background: 
+    radial-gradient(ellipse 150% 100% at 10% 20%, rgba(255, 235, 200, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse 150% 100% at 90% 80%, rgba(255, 215, 170, 0.4) 0%, transparent 50%),
+    linear-gradient(135deg, 
+      rgba(255, 248, 240, 1) 0%,
+      rgba(255, 245, 235, 1) 25%,
+      rgba(255, 240, 225, 1) 50%,
+      rgba(255, 245, 235, 1) 75%,
+      rgba(255, 248, 240, 1) 100%
+    );
+  background-size: 200% 200%, 200% 200%, 200% 200%;
+  animation: liveWallpaper 20s ease-in-out infinite;
   position: relative;
+  overflow: hidden;
+}
+
+@keyframes liveWallpaper {
+  0%, 100% {
+    background-position: 0% 50%, 100% 50%, 0% 50%;
+  }
+  33% {
+    background-position: 50% 30%, 50% 70%, 50% 30%;
+  }
+  66% {
+    background-position: 100% 50%, 0% 50%, 100% 50%;
+  }
+}
+
+.activities::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 200, 100, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: floatOrb1 15s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes floatOrb1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(100px, 50px) scale(1.2);
+    opacity: 0.8;
+  }
 }
 
 .activities::before {
@@ -1615,8 +1707,8 @@ button:focus-visible {
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-primary), var(--color-accent), transparent);
+  height: 0;
+  display: none;
 }
 
 .activities-grid {
@@ -1626,17 +1718,54 @@ button:focus-visible {
 }
 
 .activity-card {
-  background: var(--color-white);
-  border-radius: var(--border-radius-lg);
+  position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  background: transparent;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
   transition: all var(--transition);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.activity-card .liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: inherit;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.activity-card .liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+.activity-card .liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  box-shadow:
+    inset 2px 2px 5px 0 rgba(255, 255, 255, 0.9),
+    inset -2px -2px 5px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 25px rgba(255, 255, 255, 0.4);
 }
 
 .activity-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
+  transform: none;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1646,28 +1775,30 @@ button:focus-visible {
 }
 
 .activity-image {
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: var(--gradient-warm);
   position: relative;
-}
-
-.activity-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(26, 26, 46, 0.1) 100%);
+  z-index: 3;
+  padding: 20px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.05) 100%);
 }
 
 .activity-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
   transition: transform var(--transition-slow);
+  display: block;
 }
 
 .activity-card:hover .activity-image img {
-  transform: scale(1.05);
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1677,6 +1808,8 @@ button:focus-visible {
 }
 
 .activity-content {
+  position: relative;
+  z-index: 3;
   padding: var(--spacing-lg);
 }
 
@@ -1694,17 +1827,24 @@ button:focus-visible {
 }
 
 .activity-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-text);
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 50%, #1a1a1a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: var(--spacing-xs);
   line-height: 1.3;
+  text-align: center;
+  letter-spacing: -0.02em;
 }
 
 .activity-description {
   font-size: 0.9375rem;
-  color: var(--color-text-muted);
-  line-height: 1.7;
+  color: #4a4a4a;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: justify;
 }
 
 .other-activities {
@@ -1832,71 +1972,88 @@ button:focus-visible {
   gap: var(--spacing-md);
 }
 
-/* Beautiful Liquid Glass Contact Card */
+/* Liquid Glass Contact Card - Like Header */
 .contact-card {
   position: relative;
   overflow: hidden;
   border-radius: 24px;
-  
-  /* Glass base */
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0.8) 100%
-  );
-  
-  /* Soft shadow for depth */
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    0 2px 8px rgba(0, 0, 0, 0.06),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-  
-  /* Glassmorphism blur */
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  
-  /* Subtle border */
-  border: 1px solid rgba(255, 255, 255, 0.5);
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
 }
 
-/* Top highlight shine */
-.contact-card::before {
+.contact-card .liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: inherit;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.contact-card .liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+.contact-card .liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  box-shadow:
+    inset 2px 2px 5px rgba(255, 255, 255, 0.8),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.4),
+    inset 0 0 25px rgba(255, 255, 255, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.contact-card .liquidGlass-shine::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0.4) 30%,
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 20%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.3) 80%,
     transparent 100%
   );
-  border-radius: 24px 24px 0 0;
+  animation: diagonalShine 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
   pointer-events: none;
-  z-index: 1;
+  filter: brightness(1.4);
+  transform-origin: center;
 }
 
-/* Edge highlight for 3D effect */
-.contact-card::after {
+/* Light gradient overlay for realistic depth */
+.contact-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 24px;
-  box-shadow: 
-    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
-    inset -1px -1px 3px rgba(255, 255, 255, 0.5),
-    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  z-index: 2.5;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
   pointer-events: none;
-  z-index: 2;
-}
-
-.contact-card .liquidGlass-effect,
-.contact-card .liquidGlass-tint,
-.contact-card .liquidGlass-shine {
-  display: none;
 }
 
 .contact-card-inner {
